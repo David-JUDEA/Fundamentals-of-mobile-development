@@ -12,7 +12,7 @@ export default function App() {
       		<Stack.Screen name="login" component={login} />
 			<Stack.Screen name="register" component={register}/>
     	</Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> 
   );
 }
 

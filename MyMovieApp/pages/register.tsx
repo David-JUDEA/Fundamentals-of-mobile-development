@@ -1,10 +1,10 @@
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-export default function register() {
+export default function register({navigation}) {
   return (
 	<View style={styles.container}>
 	  <Text>register</Text>
-	  <Button title="Se connecter" onPress={() :void => {}} />
+	  <Button title="Se connecter" onPress={() :void => {navigation.navigate("login")}} />
 	</View>
   );
 }
