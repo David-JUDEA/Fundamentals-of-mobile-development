@@ -4,7 +4,7 @@ export default function login() {
   return (
 	<View style={styles.container}>
 	  <Text>login</Text>
-	  <Button title="s'inscrire" onPress={() :void => {}} />
+	  <Button title="S'inscrire" onPress={() :void => {}} />
 	</View>
   );
 }

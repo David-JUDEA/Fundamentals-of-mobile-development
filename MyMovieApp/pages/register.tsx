@@ -3,8 +3,8 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 export default function register() {
   return (
 	<View style={styles.container}>
-	  <Text>Open up App.js to start working on your app!</Text>
-	  <Button title="se connecter" onPress={() :void => {}} />
+	  <Text>register</Text>
+	  <Button title="Se connecter" onPress={() :void => {}} />
 	</View>
   );
 }
