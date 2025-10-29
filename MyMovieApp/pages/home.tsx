@@ -27,7 +27,7 @@ export function DisplayAnImage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#d2cdbaff",
     alignItems: "center",
     justifyContent: "center",
   },
