@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import login from "./pages/login";
-import register from "./pages/register";
+import login from "./pages/Login";
+import register from "./pages/Register";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import home from "./pages/home";
-import list from "./pages/list";
+import home from "./pages/Home";
+import list from "./pages/List";
 
 const AuthStack = createNativeStackNavigator();
 const AppStack = createBottomTabNavigator();

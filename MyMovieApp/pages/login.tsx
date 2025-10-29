@@ -1,13 +1,13 @@
 import { Button, StyleSheet, Text, View } from "react-native";
 
-export default function login({ navigation }) {
+export default function Login({ navigation }) {
   return (
     <View style={styles.container}>
-      <Text>login</Text>
+      <Text>Login</Text>
       <Button
         title="S'inscrire"
         onPress={(): void => {
-          navigation.navigate("register");
+          navigation.navigate("Register");
         }}
       />
     </View>
