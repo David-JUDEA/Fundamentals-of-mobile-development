@@ -1,29 +1,66 @@
-import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ActivityIndicator,
+  FlatList,
+  ImageBackground,
+} from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import Api from "../services/API/api";
 
 export default function Home() {
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const API_KEY = "4aca0f6f6a985bbeda325c359be7a7aa";
+  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=28`;
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(data.results);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color="#ffffffff" />
+        <Text>Chargement des films...</Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
-      
-      <DisplayAnImage />
+      <FlatList
+        data={movies}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <View style={styles.movieItem}>
+            <Image
+              source={{
+                uri: `https://image.tmdb.org/t/p/w500${item.poster_path}`,
+              }}
+              style={styles.poster}
+            />
+            <Text style={styles.title}>{item.title}</Text>
+          </View>
+        )}
+      />
     </View>
   );
 }
 
-export function DisplayAnImage() {
-  return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.headerImage}>
-        <Image
-          style={{ width: 413, height: 300 }}
-          source={require("../assets/image_movies.png")}
-          resizeMode="cover"
-        />
-      </SafeAreaView>
-    </SafeAreaProvider>
-  );
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -35,5 +72,20 @@ const styles = StyleSheet.create({
   headerImage: {
     width: "100%",
     height: 200,
+  },
+  movieItem: {
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  poster: {
+    width: 200,
+    height: 300,
+    borderRadius: 10,
+  },
+  title: {
+    marginTop: 10,
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });

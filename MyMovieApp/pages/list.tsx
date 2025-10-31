@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, FlatList, Image, ActivityIndicator } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  StyleSheet,
+  Text,
+  View,
+  FlatList,
+  Image,
+  ActivityIndicator,
+} from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import Api from "../services/API/api";
 
 export default function MovieList() {
@@ -9,7 +16,7 @@ export default function MovieList() {
   const [loading, setLoading] = useState(true);
 
   const API_KEY = "4aca0f6f6a985bbeda325c359be7a7aa";
-  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=`; 
+  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=`;
 
   useEffect(() => {
     fetch(API_URL)
@@ -24,29 +31,23 @@ export default function MovieList() {
       });
   }, []);
 
-  if (loading) {
-    return (
-      <View style={styles.container}>
-        <ActivityIndicator size="large" color="#ffffffff" />
-        <Text>Chargement des films...</Text>
-      </View>
-    );
-  }
-
   return (
     <View style={styles.container}>
+      <Text style={styles.header}>Films populaires</Text>
+
       <FlatList
         data={movies}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <View style={styles.movieItem}>
-            <Image
-              source={{ uri: `https://image.tmdb.org/t/p/w500${item.poster_path}` }}
-              style={styles.poster}
-            />
-            <Text style={styles.title}>{item.title}</Text>
+        renderItem={({ item, index }) => (
+          <View style={styles.listItem}>
+            <Text style={styles.index}>{index + 1}.</Text>
+            <View style={styles.movieInfo}>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.subtitle}>Sortie : {item.release_date}</Text>
+            </View>
           </View>
         )}
+        ItemSeparatorComponent={() => <View style={styles.separator} />} // ligne de séparation
       />
     </View>
   );
@@ -55,22 +56,38 @@ export default function MovieList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#bcafafff",
-    padding: 10,
+    backgroundColor: "#c6c1c1ff",
+    paddingTop: 50,
+    paddingHorizontal: 20,
   },
-  movieItem: {
-    marginBottom: 20,
+  header: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  listItem: {
+    flexDirection: "row",
     alignItems: "center",
+    paddingVertical: 10,
   },
-  poster: {
-    width: 200,
-    height: 300,
-    borderRadius: 10,
+  index: {
+    width: 30,
+    fontSize: 16,
+    color: "#888",
+  },
+  movieInfo: {
+    flex: 1,
   },
   title: {
-    marginTop: 10,
     fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: "500",
+  },
+  subtitle: {
+    color: "#666",
+    fontSize: 14,
+  },
+  separator: {
+    height: 1,
+    backgroundColor: "#ddd",
   },
 });
