@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, FlatList, Image, ActivityIndicator } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Api from "../services/API/api";
 
 export default function MovieList() {
@@ -53,7 +55,7 @@ export default function MovieList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#000000ff",
     padding: 10,
   },
   movieItem: {

@@ -16,13 +16,13 @@ export default function App() {
     <NavigationContainer>
       {isLogged ? (
         <AppStack.Navigator>
-          <AppStack.Screen name="home" component={home} />
-          <AppStack.Screen name="list" component={list} />
+          <AppStack.Screen name="Home" component={home} />
+          <AppStack.Screen name="List" component={list} />
         </AppStack.Navigator>
       ) : (
         <AuthStack.Navigator>
-          <AuthStack.Screen name="login" component={login} />
-          <AuthStack.Screen name="register" component={register} />
+          <AuthStack.Screen name="Login" component={login} />
+          <AuthStack.Screen name="Register" component={register} />
         </AuthStack.Navigator>
       )}
     </NavigationContainer>

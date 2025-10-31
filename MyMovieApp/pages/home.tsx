@@ -5,7 +5,7 @@ import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 export default function Home() {
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      
       <DisplayAnImage />
     </View>
   );
@@ -14,10 +14,11 @@ export default function Home() {
 export function DisplayAnImage() {
   return (
     <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={styles.headerImage}>
         <Image
-          style={{ width: 200, height: 200 }}
-          source={require("../assets/image_home.jpg")}
+          style={{ width: 413, height: 300 }}
+          source={require("../assets/image_movies.png")}
+          resizeMode="cover"
         />
       </SafeAreaView>
     </SafeAreaProvider>
@@ -27,8 +28,12 @@ export function DisplayAnImage() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#d2cdbaff",
+    backgroundColor: "#000000ff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  headerImage: {
+    width: "100%",
+    height: 200,
   },
 });
