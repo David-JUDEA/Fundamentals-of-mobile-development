@@ -9,7 +9,7 @@ export default function MovieList() {
   const [loading, setLoading] = useState(true);
 
   const API_KEY = "4aca0f6f6a985bbeda325c359be7a7aa";
-  const API_URL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=fr-FR`;
+  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=`; 
 
   useEffect(() => {
     fetch(API_URL)
@@ -27,7 +27,7 @@ export default function MovieList() {
   if (loading) {
     return (
       <View style={styles.container}>
-        <ActivityIndicator size="large" color="#000" />
+        <ActivityIndicator size="large" color="#ffffffff" />
         <Text>Chargement des films...</Text>
       </View>
     );
@@ -55,7 +55,7 @@ export default function MovieList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#000000ff",
+    backgroundColor: "#bcafafff",
     padding: 10,
   },
   movieItem: {

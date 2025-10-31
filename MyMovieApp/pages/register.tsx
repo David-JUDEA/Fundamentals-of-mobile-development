@@ -5,7 +5,7 @@ export default function Register({ navigation }) {
     <View style={styles.container}>
       <Text>Register</Text>
       <Button
-        title="Se connecter"
+        title="S'inscrire"
         onPress={(): void => {
           navigation.navigate("Login");
         }}
