@@ -1,6 +1,12 @@
 import { Button, StyleSheet, Text, View, ImageBackground } from "react-native";
 
-export default function Login({ navigation }) {
+export default function Login({ navigation, setIsLogged }) {
+  const handleLogin = () => {
+    // Ici, tu pourrais faire une vraie vérification (API, etc.)
+    // Si tout est OK :
+    setIsLogged(true);
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -34,7 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-	width: 413
+    width: 413,
   },
 
   overlay: {

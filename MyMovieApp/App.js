@@ -1,8 +1,9 @@
+import React, { useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import register from "./pages/Register";
-import login from "./pages/Login";
+import Login from "./pages/Login";
 import home from "./pages/Home";
 import list from "./pages/List";
 
@@ -10,7 +11,7 @@ const AuthStack = createNativeStackNavigator();
 const AppStack = createBottomTabNavigator();
 
 export default function App() {
-  const isLogged = true;
+  const [isLogged, setIsLogged] = useState(false);
 
   return (
     <NavigationContainer>
@@ -21,7 +22,7 @@ export default function App() {
             component={home}
             options={{
               headerShown: true,
-              headerTitle: "Home Page",
+              headerTitle: "Home",
               headerStyle: {
                 backgroundColor: "#948e8eff",
               },
@@ -32,7 +33,7 @@ export default function App() {
             component={list}
             options={{
               headerShown: true,
-              headerTitle: "Home Page",
+              headerTitle: "List",
               headerStyle: {
                 backgroundColor: "#948e8eff",
               },
@@ -43,16 +44,26 @@ export default function App() {
         <AuthStack.Navigator>
           <AuthStack.Screen
             name="Login"
-            component={login}
+            children={(props) => <Login {...props} setIsLogged={setIsLogged} />}
             options={{
               headerShown: true,
-              headerTitle: "Home Page",
+              headerTitle: "Login",
               headerStyle: {
                 backgroundColor: "#C30020",
               },
             }}
           />
-          <AuthStack.Screen name="Register" component={register} />
+          <AuthStack.Screen
+            name="Register"
+            component={register}
+            options={{
+              headerShown: true,
+              headerTitle: "Register",
+              headerStyle: {
+                backgroundColor: "#948e8eff",
+              },
+            }}
+          />
         </AuthStack.Navigator>
       )}
     </NavigationContainer>
