@@ -15,6 +15,7 @@ export default function Login({ navigation, setIsLogged }) {
       >
         <View style={styles.overlay}>
           <Text style={styles.innerText}>Login</Text>
+		  <Text>&</Text>
           <Button title="Se connecter" onPress={handleLogin} />
           <Text style={styles.innerText}>&</Text>
           <Button

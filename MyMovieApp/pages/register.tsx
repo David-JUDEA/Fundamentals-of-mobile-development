@@ -10,6 +10,7 @@ export default function Register({ navigation }) {
       >
         <View style={styles.overlay}>
           <Text style={styles.innerText}>Registe</Text>
+		  <Text>&</Text>
           <Button
             title="S'inscrire"
             onPress={(): void => {
