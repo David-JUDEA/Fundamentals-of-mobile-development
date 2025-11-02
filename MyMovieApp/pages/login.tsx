@@ -1,9 +1,8 @@
+import React from "react";
 import { Button, StyleSheet, Text, View, ImageBackground } from "react-native";
 
 export default function Login({ navigation, setIsLogged }) {
   const handleLogin = () => {
-    // Ici, tu pourrais faire une vraie vérification (API, etc.)
-    // Si tout est OK :
     setIsLogged(true);
   };
 
@@ -16,8 +15,10 @@ export default function Login({ navigation, setIsLogged }) {
       >
         <View style={styles.overlay}>
           <Text style={styles.innerText}>Login</Text>
+          <Button title="Se connecter" onPress={handleLogin} />
+          <Text style={styles.innerText}>&</Text>
           <Button
-            title="Se connecter"
+            title="S'inscrire"
             onPress={(): void => {
               navigation.navigate("Register");
             }}
