@@ -15,8 +15,8 @@ export default function MovieList() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const API_KEY = "4aca0f6f6a985bbeda325c359be7a7aa";
-  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&page=1&with_genres=`;
+  const API_KEY = "...";
+  const API_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=fr-FR&pa`;
 
   useEffect(() => {
     fetch(API_URL)
