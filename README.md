@@ -35,7 +35,7 @@ Ce projet suit le sujet **TIC-MOB1 - EtnaFlix**.
 - [x] **Étape 2 :** Création de l'interface de connexion (Layouts).
 - [x] **Étape 3 :** Création des vues Liste et Grille (Adapters & ViewHolders).
 - [x] **Étape 4 :** Connexion à l'API TMDB et récupération des données JSON.
-- [~]z **Étape 5 :** Création de la page "Détails" (Navigation fonctionnelle, affichage des données en cours).
+- [ ] **Étape 5 :** Création de la page "Détails" (Navigation fonctionnelle, affichage des données en cours).
 
 ## Installation et Configuration
 
